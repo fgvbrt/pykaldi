@@ -14,6 +14,7 @@
 #
 set -e
 PROTOBUF_GIT="https://github.com/google/protobuf.git"
+PROTOBUF_COMMIT="805174eda2356df1b01752c8bc57019e696e0a75"
 
 PROTOBUF_DIR="$PWD/protobuf"
 
@@ -75,6 +76,8 @@ if [ ! -d "$PROTOBUF_DIR" ]; then
 fi
 cd "$PROTOBUF_DIR"
 git pull
+git pull origin master
+git checkout "$PROTOBUF_COMMIT"
 
 ./autogen.sh
 ./configure --prefix $PROTOBUF_DIR
